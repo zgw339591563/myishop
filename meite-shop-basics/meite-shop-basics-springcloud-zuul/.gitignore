@@ -1,1 +1,10 @@
 /target/
+/.classpath
+/.springBeans
+/.project
+/.settings/
+/.idea/
+src/test/
+/.settings/org.eclipse.m2e.core.prefs
+/.settings/org.eclipse.jdt.core.prefs
+/.settings/org.eclipse.core.resources.prefs
