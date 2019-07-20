@@ -11,3 +11,4 @@ src/test/
 *.prefs
 *.project
 *.classpath
+src/main/java/com/mayikt/zuul/handler/factory/
