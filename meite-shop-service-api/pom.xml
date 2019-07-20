@@ -7,16 +7,14 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>meite-shop-service-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>meite-shop-service-api-weixin</module>
 		<module>meite-shop-service-api-member</module>
-		<module>meite-shop-service-api-search</module>
 		<module>meite-shop-service-api-goods</module>
 		<module>meite-shop-service-api-pay</module>
 		<module>meite-shop-service-api-integral</module>
-		<module>meite-shop-service-api-authorizatio</module>
-		<module>meite-shop-basics-api-auth</module>
 		<module>meite-shop-service-api-auth</module>
 		<module>meite-shop-service-api-spike</module>
 	</modules>
