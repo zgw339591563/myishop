@@ -5,8 +5,8 @@ import java.util.UUID;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,7 +53,7 @@ public class SpikeCommodityProducer implements RabbitTemplate.ConfirmCallback {
 	}
 
 	// 生产消息确认机制 生产者往服务器端发送消息的时候，采用应答机制
-	@Override
+
 	public void confirm(CorrelationData correlationData, boolean ack, String cause) {
 		String jsonString = correlationData.getId();
 		System.out.println("消息id:" + correlationData.getId());
@@ -66,4 +66,6 @@ public class SpikeCommodityProducer implements RabbitTemplate.ConfirmCallback {
 		send(jsonObject);
 		log.info(">>>使用MQ消息确认机制投递到MQ中失败");
 	}
+
+
 }
