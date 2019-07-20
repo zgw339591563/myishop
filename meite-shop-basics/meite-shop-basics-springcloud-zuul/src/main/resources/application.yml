@@ -17,7 +17,7 @@ spring:
 ###数据库相关连接      
   datasource:
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/meite_gateway?useUnicode=true&characterEncoding=UTF-8
 ###服务注册到eureka地址
