@@ -28,8 +28,7 @@ spring:
 ###数据库相关连接      
   datasource:
     username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/meite_spike
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/meite_spike?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
 
   
