@@ -37,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class VerificationBuild implements GatewayBuild {
+
 	@Autowired
 	private BlacklistMapper blacklistMapper;
 	@Autowired

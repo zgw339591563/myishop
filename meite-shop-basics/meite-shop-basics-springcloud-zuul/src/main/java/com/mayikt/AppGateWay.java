@@ -43,7 +43,7 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 @EnableSwagger2Doc
 @MapperScan(basePackages = "com.mayikt.zuul")
 // @EnableApolloConfig
-@EnableFeignClients
+@EnableFeignClients(basePackages="com.mayikt.zuul")
 public class AppGateWay {
 	//
 	// @ApolloConfig
