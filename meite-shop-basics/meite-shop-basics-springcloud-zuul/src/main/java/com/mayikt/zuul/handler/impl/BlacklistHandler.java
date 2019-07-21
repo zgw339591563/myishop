@@ -1,8 +1,11 @@
 package com.mayikt.zuul.handler.impl;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mayikt.zuul.build.GatewayBuild;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.mayikt.zuul.handler.GatewayHandler;
@@ -26,13 +29,21 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BlacklistHandler extends BaseHandler implements GatewayHandler {
 
+
+	@Resource(name = "verificationBuild")
+	private GatewayBuild gatewayBuild;
+
 	@Override
 	public void service(RequestContext ctx, HttpServletRequest req, HttpServletResponse response) {
 		log.info(">>>>>>>第二关黑名单Handler执行>>>>");
 		// 执行下一个handler执行
-		nextGatewayHandler.service(ctx, req, response);
-
+		Boolean aBoolean = gatewayBuild.blackBlock(ctx, getIpAddr(req), response);
+		if(aBoolean){
+			nextGatewayHandler.service(ctx, req, response);
+		}
 	}
+
+
 
 	// 有多种 可以使用模版方案设计模式或者 base
 

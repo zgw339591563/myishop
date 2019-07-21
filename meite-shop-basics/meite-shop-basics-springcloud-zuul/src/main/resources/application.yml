@@ -45,7 +45,16 @@ zuul:
     api-d:
         ### 以 /api-pay/访问转发到订单服务
       path: /api-spike/**
-      serviceId: app-mayikt-spike     
+      serviceId: app-mayikt-spike
+
+#网关白名单，无需要签权url
+gate:
+  ignore:
+    authentication:
+      ensWith: /getAccessToken
+
+
+
 mayikt: 
   zuul: 
     swagger: 

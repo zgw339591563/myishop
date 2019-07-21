@@ -1,8 +1,10 @@
 package com.mayikt.zuul.handler.impl;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mayikt.zuul.build.GatewayBuild;
 import org.springframework.stereotype.Component;
 
 import com.mayikt.zuul.handler.GatewayHandler;
@@ -25,11 +27,16 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class ToVerifyMapHandler extends BaseHandler implements GatewayHandler {
+	@Resource(name = "verificationBuild")
+	private GatewayBuild gatewayBuild;
 
 	@Override
 	public void service(RequestContext ctx, HttpServletRequest req, HttpServletResponse response) {
 		log.info(">>>>>>>第三关api验证签名Handler执行>>>>");
-		nextGatewayHandler.service(ctx, req, response);
+		Boolean aBoolean = gatewayBuild.toVerifyMap(ctx, getIpAddr(req), req);
+		if(aBoolean){
+			nextGatewayHandler.service(ctx, req, response);
+		}
 	}
 
 }

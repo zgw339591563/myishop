@@ -19,7 +19,7 @@ import com.mayikt.zuul.feign.AuthorizationServiceFeign;
 import com.mayikt.zuul.mapper.BlacklistMapper;
 import com.mayikt.zuul.mapper.entity.MeiteBlacklist;
 import com.netflix.zuul.context.RequestContext;
-
+import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -42,6 +42,13 @@ public class VerificationBuild implements GatewayBuild {
 	private BlacklistMapper blacklistMapper;
 	@Autowired
 	private AuthorizationServiceFeign verificaCodeServiceFeign;
+
+	/**
+     * 不需要网关签权的url配置(/getAccessToken)
+     * 默认/getAccessToken结尾是不需要的
+     */
+	@Value("${gate.ignore.authentication.ensWith}")
+    private String ignoreUrls = "/getAccessToken";
 
 	@Override
 	public Boolean blackBlock(RequestContext ctx, String ipAddres, HttpServletResponse response) {
@@ -75,9 +82,17 @@ public class VerificationBuild implements GatewayBuild {
 	public Boolean apiAuthority(RequestContext ctx, HttpServletRequest request) {
 		String servletPath = request.getServletPath();
 		log.info(">>>>>servletPath:" + servletPath + ",servletPath.substring(0, 5):" + servletPath.substring(0, 5));
-		if (!servletPath.substring(0, 7).equals("/public")) {
-			return true;
+//		if (!servletPath.substring(0, 7).equals("/public")) {
+//			return true;
+//		}
+		//获取token
+		String[] split = ignoreUrls.split(",");
+		for(String igonrepath:split){
+			if (servletPath.endsWith(igonrepath)) {
+				return true;
+			}
 		}
+
 		String accessToken = request.getParameter("accessToken");
 		log.info(">>>>>accessToken验证:" + accessToken);
 		if (StringUtils.isEmpty(accessToken)) {
