@@ -41,6 +41,7 @@ public class GatewayFilter extends ZuulFilter {
 	/**
 	 * 请求之前拦截处理业务逻辑 建议将限制黑名单存放到redis或者携程的阿波罗
 	 */
+	@Override
 	public Object run() throws ZuulException {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		// 1.获取请求对象
