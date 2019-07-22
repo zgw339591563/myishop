@@ -15,7 +15,7 @@ public class SessionConfig {
 	String hostName;
 	@Value("${redis.port:6379}")
 	int port;
-	@Value("${redis.password:123456}")
+	@Value("${redis.password}")
 	String passWord;
 
 	@Bean
