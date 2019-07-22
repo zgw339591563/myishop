@@ -29,7 +29,7 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/meite_member?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/meite_member?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
 
 ####打印MyBatias日志    
 logging:
