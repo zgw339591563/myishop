@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ctc.wstx.util.StringUtil;
 import com.mayikt.base.BaseApiService;
 import com.mayikt.base.BaseResponse;
 import com.mayikt.constants.Constants;
