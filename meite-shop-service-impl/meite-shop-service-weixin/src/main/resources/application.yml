@@ -6,8 +6,8 @@ logging:
 wx:
   mp:
     configs:
-      - appId: wx5c43fde3c9733d9e #（一个公众号的appid）
-        secret: b8b217126c33a5fb7074927d5e72a81a #（公众号的appsecret）
+      - appId: wx7f1f784adebd8783 #（一个公众号的appid）
+        secret: 88c830a63ab100e01db83b9fae29ebef #（公众号的appsecret）
         token: mayikt #（接口配置里的Token值）
 ###服务注册到eureka地址
 eureka:
@@ -15,7 +15,7 @@ eureka:
     service-url:
            defaultZone: http://localhost:8100/eureka        
 server:
-  port: 8200
+  port: 80
 
   
 mayikt: 
@@ -34,8 +34,8 @@ spring:
   application:
     name: app-mayikt-weixin
   redis:
-    host: 188.131.155.46
-    password: 123456
+    host: 127.0.0.1
+#    password: 123456
     port: 6379
     pool:
       max-idle: 100
