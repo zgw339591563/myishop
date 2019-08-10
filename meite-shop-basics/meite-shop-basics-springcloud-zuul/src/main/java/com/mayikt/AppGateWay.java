@@ -65,9 +65,10 @@ public class AppGateWay {
 		}
 
 		private List<SwaggerResource> resources() {
-			// 从阿波罗平台获取配置文件
+			// 第一种方式---从阿波罗平台获取配置文件
 			// String swaDocJson =
 			// config.getProperty("mayikt.zuul.swagger.document", null);
+			//第二种方式--也是从配置文件加载不过是懒汉式--用的时候才调用
 			JSONArray docJsonArray = JSONArray.parseArray(document);
 			List resources = new ArrayList<>();
 			// 遍历集合数组
