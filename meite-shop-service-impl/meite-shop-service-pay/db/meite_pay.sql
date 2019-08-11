@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 11/08/2019 16:58:02
+ Date: 11/08/2019 20:16:03
 */
 
 SET NAMES utf8mb4;
@@ -44,8 +44,8 @@ CREATE TABLE `payment_channel`  (
 -- ----------------------------
 -- Records of payment_channel
 -- ----------------------------
-INSERT INTO `payment_channel` VALUES (1, '银联支付', 'yinlian_pay', '777290058110048', 'http://localhost:8080/ACPSample_B2C/frontRcvResponse', 'http://222.222.222.222:8080/ACPSample_B2C/backRcvResponse', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `payment_channel` VALUES (2, '支付宝', 'ali_pay', '777666655522521', 'test', 'test', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `payment_channel` VALUES (1, '银联支付', 'yinlian_pay', '777290058110048', 'http://localhost:8080/ACPSample_B2C/frontRcvResponse', 'http://222.222.222.222:8080/ACPSample_B2C/backRcvResponse', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'com.mayikt.pay.strategy.impl.UnionPayStrategy', NULL);
+INSERT INTO `payment_channel` VALUES (2, '支付宝', 'ali_pay', '777666655522521', 'test', 'test', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 'com.mayikt.pay.strategy.impl.AliPayStrategy', NULL);
 
 -- ----------------------------
 -- Table structure for payment_transaction
@@ -62,9 +62,9 @@ CREATE TABLE `payment_transaction`  (
   `CREATED_TIME` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `UPDATED_BY` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `UPDATED_TIME` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `PARTYPAY_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `PAYMENT_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `payment_Channel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `PARTYPAY_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '第三方支付id 支付宝、银联等 在第三方支付渠道完成后分配一个支付id 对账使用',
+  `PAYMENT_ID` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付id',
+  `payment_Channel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付渠道',
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '支付交易 ' ROW_FORMAT = Dynamic;
 
