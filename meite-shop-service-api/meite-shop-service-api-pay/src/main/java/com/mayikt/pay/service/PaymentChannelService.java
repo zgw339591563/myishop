@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.mayikt.weixin.out.dto.PaymentChannelDTO;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 public interface PaymentChannelService {
 	/**
@@ -12,6 +13,6 @@ public interface PaymentChannelService {
 	 * 
 	 * @return
 	 */
-	@GetMapping("/selectAll")
+	@RequestMapping("/selectAll")
 	public List<PaymentChannelDTO> selectAll();
 }
