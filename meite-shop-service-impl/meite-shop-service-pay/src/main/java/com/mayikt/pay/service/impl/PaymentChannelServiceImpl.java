@@ -13,8 +13,7 @@ import com.mayikt.pay.service.PaymentChannelService;
 import com.mayikt.weixin.out.dto.PaymentChannelDTO;
 
 @RestController
-public class PaymentChannelServiceImpl extends BaseApiService<List<PaymentChannelDTO>>
-		implements PaymentChannelService {
+public class PaymentChannelServiceImpl extends BaseApiService<List<PaymentChannelDTO>> implements PaymentChannelService {
 	@Autowired
 	private PaymentChannelMapper paymentChannelMapper;
 

@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 11/08/2019 16:25:54
+ Date: 11/08/2019 16:58:02
 */
 
 SET NAMES utf8mb4;
@@ -36,15 +36,16 @@ CREATE TABLE `payment_channel`  (
   `CREATED_TIME` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `UPDATED_BY` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `UPDATED_TIME` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `CLASS_ADDRES` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `CLASS_ADDRES` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '接口实现地址',
+  `retry_beanId` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '重试接口beanId',
   PRIMARY KEY (`ID`, `CHANNEL_ID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '支付渠道 ' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of payment_channel
 -- ----------------------------
-INSERT INTO `payment_channel` VALUES (1, '银联支付', 'yinlian_pay', '777290058110048', 'http://localhost:8080/ACPSample_B2C/frontRcvResponse', 'http://222.222.222.222:8080/ACPSample_B2C/backRcvResponse', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `payment_channel` VALUES (2, '支付宝', 'ali_pay', '777666655522521', 'test', 'test', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `payment_channel` VALUES (1, '银联支付', 'yinlian_pay', '777290058110048', 'http://localhost:8080/ACPSample_B2C/frontRcvResponse', 'http://222.222.222.222:8080/ACPSample_B2C/backRcvResponse', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `payment_channel` VALUES (2, '支付宝', 'ali_pay', '777666655522521', 'test', 'test', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for payment_transaction
