@@ -1,6 +1,7 @@
  package com.mayikt.pay.callback.template;
 
 import java.util.Map;
+import java.util.concurrent.Executor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +40,7 @@ public abstract class AbstractPayCallbackTemplate {
 	@Autowired
 	private PaymentTransactionLogMapper paymentTransactionLogMapper;
 	@Autowired
-	private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+	private Executor threadPoolTaskExecutor;
 
 	/**
 	 * 获取所有请求的参数，封装成Map集合 并且验证是否被篡改
