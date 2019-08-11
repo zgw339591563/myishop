@@ -45,7 +45,7 @@ spring:
 ###数据库相关连接      
   datasource:
     username: root
-    password: root
+#    password: root
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/meite_weixin
 
