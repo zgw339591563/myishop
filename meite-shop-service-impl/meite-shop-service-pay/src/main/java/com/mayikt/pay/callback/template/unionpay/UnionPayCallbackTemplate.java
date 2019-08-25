@@ -97,6 +97,9 @@ public class UnionPayCallbackTemplate extends AbstractPayCallbackTemplate {
 		paymentTransactionMapper.updatePaymentStatus(PayConstant.PAY_STATUS_SUCCESS + "", orderId, "yinlian_pay");
 		// 3.调用积分服务接口增加积分(处理幂等性问题) MQ
 		addMQIntegral(paymentTransaction); // 使用MQ
+		//下面的错误是用来模拟分布式事务最终一致性方案的-----上面的MQ队列有两个会接收到上面addMQIntegral 方法发送的topic 一个是添加积分队列 一个是支付补偿队列
+		//能走到上面发送MQ这一步说明 上面步骤2的数据库操作是成功的---所以下面即使抛错导致数据库事务回滚 单是积分是增加的 ，再下次银联再次回调时--补偿队列能进行最终一致性补偿
+
 		int i = 1 / 0; // 支付状态还是为待支付状态但是 积分缺增加
 		return successResult();
 	}
